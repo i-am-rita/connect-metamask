@@ -111,7 +111,24 @@ Navbar.Wrapper = styled.div`
       }
     }
   }
-  @media (max-width: 780px) {
+  @media (max-width: 768px) {
+    .navbar {
+      .logo {
+        font-size: 2px;
+      }
+      .unordered-nav {
+        a {
+          font-size: 2px;
+          padding: 0 5px;
+        }
+      }
+      .buttones, .buttonss {
+        font-size: 8px;
+        padding: 0 5px;
+      }
+    }
+  }
+  @media (max-width: 1080px) {
     .navbar {
       .logo {
         font-size: 10px;

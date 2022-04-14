@@ -1,24 +1,26 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 // import SearchIcon from '@mui/icons-material/Search';
 
 // Using Async here because the data we're requesting here might take time
-async function getAccount(){
-  const accounts = await window.ethereum.request({method: "eth_requestAccounts"});
+async function getAccount() {
+  const accounts = await window.ethereum.request({
+    method: "eth_requestAccounts",
+  });
   const account = accounts[0];
   return account;
 }
 export function Navbar() {
-  const [addressAccount, setAddressAccount] = useState('')
-const connectWalletOnclick = () => {
-  if(window !== "undefined"){
-    getAccount().then((response) => {
-      setAddressAccount(response)
-    })
-  }
-}
+  const [addressAccount, setAddressAccount] = useState("");
+  const connectWalletOnclick = () => {
+    if (window !== "undefined") {
+      getAccount().then((response) => {
+        setAddressAccount(response);
+      });
+    }
+  };
   return (
     <Navbar.Wrapper className="navbar-container">
       <nav className="navbar">
@@ -68,9 +70,6 @@ Navbar.Wrapper = styled.div`
       text-decoration: none;
       font-size: 30px;
       font-family: "Rubik Moonrocks", cursive;
-      @media screen and (max-width: 1080px) {
-        font-size: 20px;
-      }
     }
 
     .unordered-nav {
@@ -87,10 +86,6 @@ Navbar.Wrapper = styled.div`
         padding: 0 15px;
         font-size: 25px;
         font-family: "Rubik Moonrocks", cursive;
-        @media screen and (max-width: 1080px) {
-          font-size: 15px;
-          padding: 0 5px;
-        }
       }
     }
     .nav-buttons {
@@ -100,17 +95,12 @@ Navbar.Wrapper = styled.div`
       text-align: center;
       .buttonss {
         margin-right: 20px;
-        ${"" /* margin-left: -100px; */}
         justify-content: space-between;
         font-size: 15px;
         color: #545454;
         border: 1px solid #545454;
         border-radius: 0;
         font-family: "Rubik Moonrocks", cursive;
-        @media screen and (max-width: 1080px) {
-          font-size: 12px;
-          padding: 0 5px;
-        }
       }
       .buttones {
         color: #000;
@@ -118,11 +108,23 @@ Navbar.Wrapper = styled.div`
         border-radius: 0;
         font-size: 15px;
         font-family: "Rubik Moonrocks", cursive;
-
-        @media screen and (max-width: 1080px) {
-          font-size: 12px;
+      }
+    }
+  }
+  @media (max-width: 780px) {
+    .navbar {
+      .logo {
+        font-size: 10px;
+      }
+      .unordered-nav {
+        a {
+          font-size: 10px;
           padding: 0 5px;
         }
+      }
+      .nav-buttons {
+        font-size: 12px;
+        padding: 0 5px;
       }
     }
   }
